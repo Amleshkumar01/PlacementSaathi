@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="96" viewBox="0 0 240 96" role="img" aria-label="Wipro">
+  <rect width="240" height="96" rx="20" fill="#fff7fb"/>
+  <g transform="translate(42 48)">
+    <circle r="26" fill="none" stroke="#7c3aed" stroke-width="8"/>
+    <circle r="18" fill="none" stroke="#06b6d4" stroke-width="8" stroke-dasharray="52 30"/>
+    <circle r="10" fill="#f59e0b"/>
+  </g>
+  <text x="88" y="58" fill="#3f235f" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="800">Wipro</text>
+</svg>

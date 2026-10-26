@@ -1,0 +1,264 @@
+@import "tailwindcss";
+
+/*
+  PlacementSaathi design tokens - "Light Premium Hybrid"
+  Minimalism (base) + Bento grid (cards) + Glassmorphism (hero accents)
+  Primary: blue. Accent: violet. White background, near-black navy text.
+*/
+@theme {
+  --color-brand-50: #eff5ff;
+  --color-brand-100: #dbe8fe;
+  --color-brand-200: #bfd6fe;
+  --color-brand-300: #93bbfd;
+  --color-brand-500: #3b7bf6;
+  --color-brand-600: #2563eb;
+  --color-brand-700: #1d4fd8;
+  --color-brand-800: #1e3fae;
+  --color-brand-900: #0b1533;
+
+  --color-accent-50: #f5f3ff;
+  --color-accent-100: #ede9fe;
+  --color-accent-200: #ddd6fe;
+  --color-accent-500: #8b5cf6;
+  --color-accent-600: #7c3aed;
+  --color-accent-700: #6d28d9;
+  --color-accent-800: #5b21b6;
+
+  --color-ink: #0b1533;
+  --color-muted: #4b5563;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-float-slow: float 9s ease-in-out infinite;
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+}
+
+/* Laptop screens that are wide but short (e.g. 1366x768 minus browser bars) */
+@custom-variant short (@media (min-width: 1024px) and (max-height: 820px));
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-brand-100);
+}
+
+/*
+  Scroll reveal. Content is only hidden after RevealObserver has run
+  (it adds .reveal-ready to <html>), so no-JS users and crawlers always see it.
+*/
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-ready .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.6s ease,
+      transform 0.6s ease;
+  }
+  .reveal-ready .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 xl:max-w-7xl 2xl:max-w-[88rem];
+  }
+
+  .section {
+    @apply py-14 sm:py-20;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand-600;
+  }
+
+  .h2 {
+    @apply text-2xl font-bold tracking-tight text-brand-900 sm:text-3xl;
+  }
+
+  .h3 {
+    @apply text-lg font-semibold tracking-tight text-brand-900;
+  }
+
+  .lead {
+    @apply text-base leading-relaxed text-muted sm:text-lg;
+  }
+
+  .prose-body {
+    @apply text-[15px] leading-relaxed text-muted sm:text-base;
+  }
+
+  /* Minimal card */
+  .card {
+    @apply rounded-2xl border border-slate-200/80 bg-white p-5 shadow-[0_1px_2px_rgba(16,24,40,0.04)] sm:p-6;
+  }
+
+  /* Interactive lift for clickable cards */
+  .card-hover {
+    @apply transition duration-200 hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-[0_12px_32px_-12px_rgba(37,99,235,0.25)];
+  }
+
+  .card-soft {
+    @apply rounded-2xl border border-brand-100 bg-brand-50/70 p-5 sm:p-6;
+  }
+
+  /* Glassmorphism surface */
+  .glass {
+    @apply rounded-2xl border border-white/70 bg-white/60 shadow-[0_8px_32px_-8px_rgba(30,64,175,0.18)] backdrop-blur-xl;
+  }
+
+  .glass-dark {
+    @apply rounded-2xl border border-white/15 bg-white/10 backdrop-blur-md;
+  }
+
+  /* Bento tile with a soft tinted background; colour is set per tile */
+  .bento {
+    @apply relative flex h-full flex-col overflow-hidden rounded-3xl border p-5 transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_16px_40px_-16px_rgba(15,23,42,0.25)] sm:p-6;
+  }
+
+  .icon-tile {
+    @apply inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-white shadow-sm;
+  }
+
+  .btn {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold transition duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 active:scale-[0.98] sm:text-base;
+  }
+
+  /* Use together with .btn, e.g. className="btn btn-primary" */
+  .btn-primary {
+    @apply bg-brand-600 text-white shadow-[0_8px_20px_-8px_rgba(37,99,235,0.6)] hover:bg-brand-700;
+  }
+
+  .btn-secondary {
+    @apply border border-slate-200 bg-white text-brand-900 hover:border-brand-200 hover:bg-brand-50;
+  }
+
+  .btn-accent {
+    @apply bg-white text-brand-800 hover:bg-brand-50;
+  }
+
+  .badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
+  }
+
+  /* 40px tall on touch screens, compact on desktop */
+  .chip {
+    @apply inline-flex min-h-10 items-center rounded-full sm:min-h-8 border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-600 transition hover:border-brand-300 hover:bg-brand-50 hover:text-brand-700;
+  }
+
+  .input {
+    @apply min-h-11 w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2 text-base text-ink placeholder:text-slate-400 focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-100;
+  }
+
+  /* Bigger touch area for links inside tables/lists without changing the layout */
+  .tap {
+    @apply -my-2 inline-flex items-center gap-1 py-2;
+  }
+
+  .link {
+    @apply font-medium text-brand-600 underline decoration-brand-200 underline-offset-4 hover:text-brand-800 hover:decoration-brand-500;
+  }
+
+  /* Tables always scroll inside their own box on mobile */
+  .table-wrap {
+    @apply w-full overflow-x-auto rounded-2xl border border-slate-200 bg-white;
+  }
+
+  .table {
+    @apply w-full border-collapse text-left text-sm;
+  }
+
+  .table thead th {
+    @apply bg-slate-50 px-4 py-3 text-xs font-semibold uppercase tracking-wide whitespace-nowrap text-slate-500;
+  }
+
+  .table tbody td {
+    @apply border-t border-slate-200 px-4 py-3 align-top text-slate-700;
+  }
+
+  .table tbody tr {
+    @apply transition-colors hover:bg-brand-50/40;
+  }
+
+  /*
+    .table-stack: on phones each row becomes a small card and every cell shows
+    its column name from data-label. From the sm breakpoint it is a normal table.
+  */
+  @media (max-width: 639.98px) {
+    .table-wrap:has(.table-stack) {
+      @apply overflow-visible border-0 bg-transparent;
+    }
+    .table-stack {
+      min-width: 0 !important;
+    }
+    .table-stack thead {
+      @apply sr-only;
+    }
+    .table-stack tbody {
+      @apply grid gap-3;
+    }
+    .table-stack tbody tr {
+      @apply grid gap-2 rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_1px_2px_rgba(16,24,40,0.04)];
+    }
+    .table-stack tbody tr:nth-child(even) td,
+    .table-stack tbody td {
+      @apply border-0 bg-transparent p-0;
+    }
+    .table-stack tbody td[data-label]::before {
+      content: attr(data-label);
+      @apply mb-0.5 block text-[11px] font-semibold uppercase tracking-wide text-slate-400;
+    }
+    .table-stack tbody td:first-child::before {
+      display: none;
+    }
+    .table-stack tbody td:first-child {
+      @apply text-base;
+    }
+  }
+
+  .bg-hero {
+    background:
+      radial-gradient(60% 60% at 85% 10%, rgba(139, 92, 246, 0.16) 0%, transparent 60%),
+      radial-gradient(50% 50% at 10% 0%, rgba(37, 99, 235, 0.12) 0%, transparent 60%),
+      linear-gradient(180deg, #f6f9ff 0%, #ffffff 100%);
+  }
+
+  .bg-dots {
+    background-image: radial-gradient(rgba(37, 99, 235, 0.12) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+}

@@ -94,3 +94,4 @@ copy. If you replace the photo, regenerate the cutout:
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/make-cutout.ps1
 ```
+vivek kumar

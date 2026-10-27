@@ -321,6 +321,13 @@ export default function HomePage() {
               </li>
             ))}
           </ul>
+          <p className="mt-6 text-sm text-slate-600">
+            Preparing for TCS? Read the{" "}
+            <Link href="/tcs-nqt-preparation" className="link">
+              TCS NQT preparation guide: pattern, syllabus and 30-day plan
+            </Link>
+            .
+          </p>
           <p className="mt-4 text-xs text-slate-500">
             Company names are trademarks of their owners. PlacementSaathi is not affiliated with any company.
           </p>

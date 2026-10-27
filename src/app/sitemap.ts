@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { companies } from "@/data/companies";
+import { aptitudeCategories, categoryPath, topicPath } from "@/data/aptitudePractice";
 import { absoluteUrl } from "@/lib/seo";
 
 const staticRoutes: { path: string; priority: number }[] = [
@@ -28,5 +29,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
+    ...aptitudeCategories.flatMap((category) => [
+      { url: absoluteUrl(categoryPath(category.slug)), changeFrequency: "monthly" as const, priority: 0.8 },
+      ...category.topics.map((topic) => ({
+        url: absoluteUrl(topicPath(category.slug, topic.slug)),
+        changeFrequency: "monthly" as const,
+        priority: 0.7,
+      })),
+    ]),
   ];
 }

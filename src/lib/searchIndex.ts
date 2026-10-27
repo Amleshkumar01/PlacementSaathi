@@ -20,6 +20,7 @@ const pages: SearchItem[] = [
   { title: "HR interview questions", href: "/mock-interview#hr", type: "Interview", hint: "Tell me about yourself, strengths, why hire you" },
   { title: "Company-wise Preparation", href: "/companies", type: "Page", hint: "TCS, Infosys, Wipro, Accenture, Capgemini, Amazon" },
   { title: "90-Day Roadmap", href: "/roadmap", type: "Page", hint: "Week-by-week placement plan" },
+  { title: "TCS NQT Preparation Guide", href: "/tcs-nqt-preparation", type: "Page", hint: "Pattern, syllabus and 30-day plan" },
   { title: "Jobs & Internships", href: "/jobs", type: "Page", hint: "Official career portals, off-campus tips, scam safety" },
   { title: "Off-campus drives", href: "/jobs#off-campus", type: "Page", hint: "How to apply off-campus as a fresher" },
   { title: "Study Plan Calculator", href: "/#study-plan", type: "Page", hint: "Split your hours across topics" },

@@ -11,6 +11,7 @@ const staticRoutes: { path: string; priority: number }[] = [
   { path: "/companies", priority: 0.8 },
   { path: "/roadmap", priority: 0.8 },
   { path: "/jobs", priority: 0.7 },
+  { path: "/tcs-nqt-preparation", priority: 0.8 },
   { path: "/faq", priority: 0.6 },
   { path: "/about", priority: 0.4 },
   { path: "/contact", priority: 0.3 },

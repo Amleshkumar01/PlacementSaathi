@@ -28,6 +28,12 @@ export default function CompaniesPage() {
         <div className="mt-5">
           <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "Companies", href: "/companies" }]} />
         </div>
+        <p className="mt-5 text-sm text-slate-600">
+          New:{" "}
+          <Link href="/tcs-nqt-preparation" className="link">
+            TCS NQT preparation guide with a 30-day plan
+          </Link>
+        </p>
       </PageHero>
 
       {groups.map((g) => {

@@ -6,8 +6,9 @@ const base = process.argv[2] ?? "http://localhost:3000";
 const routes = [
   "/", "/dsa", "/aptitude", "/resume", "/mock-interview", "/companies",
   "/companies/tcs", "/companies/infosys", "/companies/wipro", "/companies/accenture",
-  "/companies/capgemini", "/companies/amazon", "/roadmap", "/jobs", "/faq", "/about", "/contact",
+  "/companies/capgemini", "/companies/amazon", "/roadmap", "/jobs", "/tcs-nqt-preparation", "/faq", "/about", "/contact",
 ];
+const longTitleRoutes = new Set(["/tcs-nqt-preparation"]);
 
 const decode = (s) =>
   s.replace(/&amp;/g, "&").replace(/&#x27;|&#39;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, "<").replace(/&gt;/g, ">");
@@ -40,14 +41,16 @@ for (const route of routes) {
   const problems = [];
   if (res.status !== 200) problems.push(`status ${res.status}`);
   if (h1 !== 1) problems.push(`${h1} h1`);
-  if (title.length < 50 || title.length > 60) problems.push(`title ${title.length} chars`);
+  // Owner-specified long titles (brand suffix requested) are allowed up to 75 chars.
+  const maxTitle = longTitleRoutes.has(route) ? 75 : 60;
+  if (title.length < 50 || title.length > maxTitle) problems.push(`title ${title.length} chars`);
   if (desc.length < 140 || desc.length > 160) problems.push(`desc ${desc.length} chars`);
   if (canonical !== expectedCanonical) problems.push(`canonical ${canonical}`);
   if (!ogImage || !twImage || twCard !== "summary_large_image" || ogTitle !== title) problems.push("og/twitter");
   if (titles.has(title)) problems.push("duplicate title");
   if (descs.has(desc)) problems.push("duplicate desc");
   if (route === "/" && !jsonLd.includes("Organization")) problems.push("no Organization");
-  if (route === "/faq" && !jsonLd.includes("FAQPage")) problems.push("no FAQPage");
+  if ((route === "/faq" || route === "/tcs-nqt-preparation") && !jsonLd.includes("FAQPage")) problems.push("no FAQPage");
   if (route === "/dsa" && !jsonLd.includes("ItemList")) problems.push("no ItemList");
   if (route.startsWith("/companies/") && !jsonLd.includes("BreadcrumbList")) problems.push("no BreadcrumbList");
   if (route.startsWith("/companies/") && !html.includes("approximate, for awareness only") && !html.includes("Approximate, for awareness only"))

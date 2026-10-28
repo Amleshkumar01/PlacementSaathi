@@ -12,7 +12,7 @@ export const metadata = buildMetadata({
 
 const kindIcon: Record<JobSource["kind"], IconName> = {
   "Company careers": "building",
-  Internships: "sparkles",
+  Internships: "book",
   "Job board": "briefcase",
   Government: "shield",
 };
@@ -29,7 +29,6 @@ export default function JobsPage() {
     <>
       <PageHero
         eyebrow="Jobs & Internships"
-        icon="briefcase"
         title="Fresher Jobs, Internships and Off-Campus Drives"
         intro="PlacementSaathi does not post job listings. Instead, we point you to official sources where real openings are published, and show you how to apply off-campus safely."
       >

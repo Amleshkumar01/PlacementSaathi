@@ -75,11 +75,7 @@ export default function TcsNqtPreparationPage() {
               { name: "TCS NQT Preparation", href: PATH },
             ]}
           />
-          <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-teal-200 bg-white/80 px-3 py-1.5 text-xs font-semibold text-teal-800">
-            <Icon name="book" className="h-4 w-4" />
-            Free guide · Company-wise prep
-          </p>
-          <h1 className="mt-4 max-w-4xl text-3xl font-bold tracking-tight text-brand-900 sm:text-5xl">{H1}</h1>
+          <h1 className="mt-5 max-w-4xl text-3xl font-bold tracking-tight text-brand-900 sm:text-5xl">{H1}</h1>
           <p className="lead mt-4 max-w-3xl">
             A complete, honest guide to preparing for the TCS NQT: what the test checks, what to study for each section, and
             a day-by-day plan you can follow alongside college.

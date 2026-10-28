@@ -16,7 +16,6 @@ export default function ResumePage() {
     <>
       <PageHero
         eyebrow="Resume Guide"
-        icon="file"
         title="Fresher Resume Guide with ATS Checklist"
         intro="At large companies, software (an ATS, Applicant Tracking System) reads your resume before a human does. With the wrong format, even a good resume can be rejected unseen. Check yours below."
       />

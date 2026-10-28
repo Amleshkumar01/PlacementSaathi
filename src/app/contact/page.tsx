@@ -13,7 +13,7 @@ export const metadata = buildMetadata({
 
 const reasons: { title: string; text: string; icon: IconName }[] = [
   { title: "Found an error", text: "Spotted a mistake in a solution, company pattern or package range? Send the page link and the error.", icon: "alert" },
-  { title: "New topic or company", text: "Tell us which company, DSA pattern or aptitude topic we should add next.", icon: "sparkles" },
+  { title: "New topic or company", text: "Tell us which company, DSA pattern or aptitude topic we should add next.", icon: "book" },
   { title: "Feedback", text: "What helped, what was confusing? Write to us directly. That is how the site improves.", icon: "mail" },
 ];
 
@@ -22,7 +22,6 @@ export default function ContactPage() {
     <>
       <PageHero
         eyebrow="Contact"
-        icon="mail"
         title="Contact PlacementSaathi"
         intro="Found a mistake, have a question or a suggestion? Email us. We don't store personal data and never send messages without your permission."
       />

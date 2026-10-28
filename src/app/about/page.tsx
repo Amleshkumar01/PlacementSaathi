@@ -22,7 +22,6 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="About"
-        icon="sparkles"
         title="About PlacementSaathi"
         intro={`${site.tagline}. PlacementSaathi is a free placement preparation website for BTech CSE students, written like a helpful senior would explain things.`}
       />

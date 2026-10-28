@@ -119,11 +119,7 @@ export default function HomePage() {
 
         <div className="container-page relative grid grid-cols-1 items-center gap-8 pt-10 pb-12 sm:pt-14 lg:min-h-[calc(100svh-4rem)] lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:gap-8 lg:py-10 short:py-6 2xl:gap-16">
           <div className="order-1 min-w-0">
-            <p className="glass inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold text-brand-700 sm:text-sm">
-              <span aria-hidden="true">👋</span>
-              {site.tagline}
-            </p>
-            <h1 className="mt-5 short:mt-3">
+            <h1>
               <span className="block text-xs font-semibold uppercase tracking-wider text-slate-500 sm:text-sm">
                 Placement Preparation for BTech CSE Students
               </span>
@@ -200,7 +196,7 @@ export default function HomePage() {
       {/* ---------- Bento grid ---------- */}
       <section className="section pt-10 sm:pt-14" aria-labelledby="tracks">
         <div className="container-page">
-          <SectionHeading id="tracks" eyebrow="Everything in one place" title="Your complete prep toolkit" />
+          <SectionHeading id="tracks" title="Your complete prep toolkit" />
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <Link
               href="/dsa"
@@ -287,7 +283,6 @@ export default function HomePage() {
         <div className="container-page">
           <SectionHeading
             id="companies-preview"
-            eyebrow="Company-wise preparation"
             title="Top hiring companies, one guide each"
             intro="Every company tests differently. See the rounds, focus topics and tips for your target company."
             action={{ href: "/companies", label: "View all companies" }}
@@ -372,7 +367,7 @@ export default function HomePage() {
               <Icon name="shield" />
             </span>
             <h2 className="mt-4 text-xl font-bold text-brand-900">Our honest promise</h2>
-            <p className="mt-1 text-sm text-slate-600">No hype. Just useful, verified preparation.</p>
+            <p className="mt-1 text-sm text-slate-600">What you can expect from this site.</p>
             <ul className="mt-5 space-y-3">
               {promises.map((p) => (
                 <li key={p} className="flex gap-3 text-sm text-slate-700">
@@ -395,7 +390,6 @@ export default function HomePage() {
         <div className="container-page">
           <SectionHeading
             id="study-plan-heading"
-            eyebrow="Study plan calculator"
             title="Build your personal study plan"
             intro="Tell us how many days you have and how many hours you can study each day. Get an instant split across DSA, Aptitude, Core CS and Interview Prep."
           />
@@ -410,7 +404,7 @@ export default function HomePage() {
         <div className="container-page">
           <SectionHeading
             id="resources"
-            eyebrow="Guides"
+            
             title="Popular preparation guides"
             action={{ href: "/roadmap", label: "Start with the roadmap" }}
           />
@@ -440,7 +434,7 @@ export default function HomePage() {
       <section className="section bg-slate-50/70" aria-labelledby="faq-preview">
         <div className="container-page grid gap-8 lg:grid-cols-[1.5fr_1fr]">
           <div>
-            <SectionHeading id="faq-preview" eyebrow="FAQ" title="Questions students often ask" />
+            <SectionHeading id="faq-preview" title="Questions students often ask" />
             <div className="mt-6">
               <FaqList items={featuredFaqs} />
             </div>

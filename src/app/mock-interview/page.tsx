@@ -15,7 +15,6 @@ export default function MockInterviewPage() {
     <>
       <PageHero
         eyebrow="Mock Interview"
-        icon="mic"
         title="Mock Interview Preparation: HR and Technical"
         intro="Selection depends on how you present your knowledge, not just on knowing it. Reading is half the preparation; practising out loud is the real preparation. This page has 3 layers: HR answers, technical viva and a project deep-dive."
       >

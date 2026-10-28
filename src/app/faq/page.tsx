@@ -27,7 +27,6 @@ export default function FaqPage() {
       />
       <PageHero
         eyebrow="FAQ"
-        icon="help"
         title="Placement Preparation FAQ"
         intro="Real questions from students, with straight and honest answers. If your question isn't here, ask us on the Contact page."
       />

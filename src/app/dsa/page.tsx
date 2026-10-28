@@ -40,7 +40,6 @@ export default function DsaPage() {
 
       <PageHero
         eyebrow="DSA Practice"
-        icon="code"
         title="DSA Practice Sheet for Campus Placements"
         intro={`Learn the pattern first, then solve problems in that pattern. Even a new interview question usually follows an old pattern. This sheet has ${dsaProblems.length} core problems across ${dsaPatterns.length} patterns.`}
       />

@@ -21,7 +21,6 @@ export default function CompaniesPage() {
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Companies", path: "/companies" }])} />
       <PageHero
         eyebrow="Company-wise Preparation"
-        icon="building"
         title="Company-wise Placement Preparation"
         intro="Everyone does general preparation, but every company tests differently. Pick your target company and see its round-by-round pattern, focus topics and tips in one place."
       >

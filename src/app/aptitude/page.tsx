@@ -25,7 +25,6 @@ export default function AptitudePage() {
     <>
       <PageHero
         eyebrow="Aptitude Practice"
-        icon="calculator"
         title="Aptitude Preparation for Campus Placements"
         intro={`Aptitude is the gatekeeper before coding. It is the first round at TCS NQT, Infosys, Wipro Elite and Accenture. Here you get weightage, shortcuts and solved examples for ${topicCount} topics.`}
       >

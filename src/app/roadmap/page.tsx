@@ -18,7 +18,6 @@ export default function RoadmapPage() {
     <>
       <PageHero
         eyebrow="90-Day Roadmap"
-        icon="map"
         title="90-Day Placement Preparation Roadmap"
         intro="This roadmap is built for 2-3 hours a day, so it fits around college classes and semester exams. Two or three quality hours every day beat one 14-hour day per week."
       >
@@ -97,7 +96,7 @@ export default function RoadmapPage() {
             <ul className="mt-6 space-y-3">
               {goldenRules.map((g) => (
                 <li key={g} className="flex gap-3 rounded-2xl border border-accent-100 bg-accent-50/60 p-4 text-sm text-slate-800">
-                  <Icon name="sparkles" className="mt-0.5 h-4 w-4 shrink-0 text-accent-600" />
+                  <Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-accent-600" />
                   {g}
                 </li>
               ))}

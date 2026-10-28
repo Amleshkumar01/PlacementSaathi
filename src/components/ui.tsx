@@ -2,30 +2,25 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import type { Difficulty } from "@/data/dsa";
 import type { Weightage } from "@/data/aptitude";
-import { Icon, type IconName } from "./Icon";
+import { Icon } from "./Icon";
 
 /** Top block of every inner page: eyebrow, the page's single H1 and intro. */
 export function PageHero({
   eyebrow,
   title,
   intro,
-  icon,
   children,
 }: {
   eyebrow: string;
   title: string;
   intro: string;
-  icon?: IconName;
   children?: ReactNode;
 }) {
   return (
     <section className="bg-hero relative overflow-hidden border-b border-slate-200/70">
       <div className="bg-dots pointer-events-none absolute inset-0 opacity-50 [mask-image:linear-gradient(to_bottom,black,transparent)]" aria-hidden="true" />
       <div className="container-page relative py-12 sm:py-16">
-        <p className="glass inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold text-brand-700">
-          {icon && <Icon name={icon} className="h-4 w-4" />}
-          {eyebrow}
-        </p>
+        <p className="eyebrow">{eyebrow}</p>
         <h1 className="mt-4 max-w-3xl text-3xl font-bold tracking-tight text-brand-900 sm:text-5xl">{title}</h1>
         <p className="lead mt-4 max-w-3xl">{intro}</p>
         {children}
@@ -84,10 +79,7 @@ export function NextStep({
         <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-700 via-brand-600 to-accent-600 px-6 py-12 text-center sm:px-12">
           <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-white/10 blur-2xl" aria-hidden="true" />
           <div className="pointer-events-none absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-accent-500/30 blur-2xl" aria-hidden="true" />
-          <p className="glass-dark relative mx-auto inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold text-white">
-            <Icon name="rocket" className="h-4 w-4" /> Your next step
-          </p>
-          <h2 id="next-step" className="relative mt-4 text-2xl font-bold text-white sm:text-3xl">
+          <h2 id="next-step" className="relative text-2xl font-bold text-white sm:text-3xl">
             {title}
           </h2>
           <p className="relative mx-auto mt-3 max-w-2xl text-brand-100">{text}</p>
@@ -136,7 +128,7 @@ export function Note({ children, tone = "accent" }: { children: ReactNode; tone?
   }[tone];
   return (
     <div className={`flex gap-3 rounded-2xl border px-4 py-3 text-sm leading-relaxed ${cls}`}>
-      <Icon name={tone === "warn" ? "alert" : "sparkles"} className="mt-0.5 h-4 w-4 shrink-0" />
+      {tone === "warn" && <Icon name="alert" className="mt-0.5 h-4 w-4 shrink-0" />}
       <div>{children}</div>
     </div>
   );

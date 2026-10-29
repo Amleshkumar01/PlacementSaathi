@@ -1,5 +1,6 @@
-import { buildMetadata } from "@/lib/seo";
+import { absoluteUrl, buildMetadata } from "@/lib/seo";
 import { site } from "@/data/site";
+import { JsonLd } from "@/components/JsonLd";
 import { Icon, type IconName } from "@/components/Icon";
 import { NextStep, PageHero, SectionHeading } from "@/components/ui";
 
@@ -20,6 +21,25 @@ const principles: { title: string; text: string; icon: IconName }[] = [
 export default function AboutPage() {
   return (
     <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          url: absoluteUrl("/about"),
+          name: "About PlacementSaathi",
+          about: { "@id": `${site.url}/#organization` },
+          mainEntity: {
+            "@type": "Organization",
+            "@id": `${site.url}/#organization`,
+            name: site.name,
+            alternateName: ["Placement Saathi", "placementsaathi.in"],
+            url: site.url,
+            logo: absoluteUrl("/logo.png"),
+            description: site.description,
+            email: site.email,
+          },
+        }}
+      />
       <PageHero
         eyebrow="About"
         title="About PlacementSaathi"
@@ -65,6 +85,7 @@ export default function AboutPage() {
           <SectionHeading id="honest" title="In plain words" />
           <ul className="mt-6 space-y-3">
             {[
+              "PlacementSaathi (placementsaathi.in) is a free study website. It is not a recruitment agency or job consultancy, and it never charges students any fee.",
               "PlacementSaathi does not guarantee any placement, job or salary. Selection depends on your effort and the company's process.",
               "There is no login, account or payment. The resume checklist and calculator run in your browser.",
               "Company names are trademarks of their owners. PlacementSaathi is not affiliated with any company.",

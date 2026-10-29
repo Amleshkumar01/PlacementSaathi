@@ -16,9 +16,9 @@ import { SiteSearch } from "@/components/SiteSearch";
 import { HomeHeroVisual } from "@/components/HomeHeroVisual";
 
 export const metadata = buildMetadata({
-  title: "Placement Preparation for BTech CSE Students | Saathi",
+  title: "PlacementSaathi: Placement Prep for BTech CSE Students",
   description:
-    "Placement preparation for BTech CSE students: pattern-wise DSA sheet, aptitude with solutions, ATS resume checklist, interview prep and company-wise guides.",
+    "PlacementSaathi is a free placement prep website for BTech CSE students: pattern-wise DSA sheet, aptitude with solutions, resume checklist and company guides.",
   path: "/",
 });
 
@@ -101,7 +101,9 @@ export default function HomePage() {
         data={{
           "@context": "https://schema.org",
           "@type": "Organization",
+          "@id": `${site.url}/#organization`,
           name: site.name,
+          alternateName: ["Placement Saathi", "placementsaathi.in"],
           url: site.url,
           logo: absoluteUrl("/logo.png"),
           slogan: site.tagline,
@@ -109,7 +111,18 @@ export default function HomePage() {
           email: site.email,
         }}
       />
-      <JsonLd data={{ "@context": "https://schema.org", "@type": "WebSite", name: site.name, url: site.url, inLanguage: "en-IN" }} />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": `${site.url}/#website`,
+          name: site.name,
+          alternateName: ["Placement Saathi", "placementsaathi.in"],
+          url: site.url,
+          inLanguage: "en-IN",
+          publisher: { "@id": `${site.url}/#organization` },
+        }}
+      />
 
       {/* ---------- Hero ---------- */}
       <section className="bg-hero relative overflow-hidden">

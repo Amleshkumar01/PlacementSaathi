@@ -5,7 +5,7 @@ export const site = {
   url: "https://placementsaathi.in",
   tagline: "From Campus to Offer, with your Saathi",
   description:
-    "Free placement preparation for BTech CSE students: pattern-wise DSA sheet, aptitude with solutions, ATS resume checklist, interview prep and company-wise guides.",
+    "PlacementSaathi (placementsaathi.in) is a free placement preparation website for BTech CSE students in India: DSA practice, aptitude, resume, interview and company-wise guides. It is not a recruitment agency and charges no fees.",
   // TODO: replace with the real inbox before launch.
   email: "hello@placementsaathi.in",
   locale: "en_IN",

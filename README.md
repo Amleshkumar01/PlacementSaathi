@@ -80,7 +80,7 @@ installed automatically. Add the custom domain under *Domain management*.
 
 ## Before launch
 
-- `src/data/site.ts` me `email` ko asli inbox se badlo (abhi `hello@placementsaathi.in` placeholder hai).
+- Official contact email `contact@placementsaathi.in` hai (`src/data/site.ts` me `email`).
 - Company patterns aur package ranges ek baar current season ke official notifications se verify karo.
 
 ## Design

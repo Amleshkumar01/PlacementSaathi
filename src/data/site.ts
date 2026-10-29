@@ -6,8 +6,8 @@ export const site = {
   tagline: "From Campus to Offer, with your Saathi",
   description:
     "PlacementSaathi (placementsaathi.in) is a free placement preparation website for BTech CSE students in India: DSA practice, aptitude, resume, interview and company-wise guides. It is not a recruitment agency and charges no fees.",
-  // TODO: replace with the real inbox before launch.
-  email: "hello@placementsaathi.in",
+  // Official contact inbox.
+  email: "contact@placementsaathi.in",
   locale: "en_IN",
 } as const;
 

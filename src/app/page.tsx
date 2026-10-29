@@ -103,7 +103,7 @@ export default function HomePage() {
           "@type": "Organization",
           name: site.name,
           url: site.url,
-          logo: absoluteUrl("/logo.svg"),
+          logo: absoluteUrl("/logo.png"),
           slogan: site.tagline,
           description: site.description,
           email: site.email,

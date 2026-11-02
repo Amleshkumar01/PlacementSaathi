@@ -1,31 +1,58 @@
-import { buildMetadata } from "@/lib/seo";
+import { absoluteUrl, buildMetadata } from "@/lib/seo";
 import { bulletFormula, commonMistakes, sectionOrder } from "@/data/resume";
 import { AtsChecklist } from "@/components/AtsChecklist";
+import { JsonLd } from "@/components/JsonLd";
+import { ResumeBuilder } from "@/components/resume/ResumeBuilder";
 import { Icon } from "@/components/Icon";
 import { NextStep, Note, PageHero, SectionHeading, StepNumber } from "@/components/ui";
 
 export const metadata = buildMetadata({
-  title: "Fresher Resume Format: ATS Checklist with Live Score",
+  title: "Free ATS Resume Builder for Freshers | PlacementSaathi",
   description:
-    "Fresher resume format for BTech CSE: a 10-point ATS checklist with live score, the project bullet formula, common resume mistakes and one-page section order.",
+    "Free ATS-friendly resume builder for BTech freshers: fill a simple form, see a live one-page preview, check ATS tips, match job keywords and download a PDF.",
   path: "/resume",
 });
 
 export default function ResumePage() {
   return (
     <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          name: "PlacementSaathi Resume Builder",
+          url: absoluteUrl("/resume"),
+          applicationCategory: "BusinessApplication",
+          operatingSystem: "Any (runs in the browser)",
+          offers: { "@type": "Offer", price: "0", priceCurrency: "INR" },
+          description: "Free ATS-friendly resume builder for freshers with a live one-page preview and PDF download.",
+        }}
+      />
       <PageHero
-        eyebrow="Resume Guide"
-        title="Fresher Resume Guide with ATS Checklist"
-        intro="At large companies, software (an ATS, Applicant Tracking System) reads your resume before a human does. With the wrong format, even a good resume can be rejected unseen. Check yours below."
+        eyebrow="Resume Builder"
+        title="Free ATS-Friendly Resume Builder for Freshers"
+        intro="Fill in the form and watch your resume take shape. The template is a simple one-column layout that ATS software (the program companies use to filter resumes) can read. Check the tips, match a job description, then download it as a PDF. Free, no sign-up."
       />
 
-      <section className="section" aria-labelledby="checklist">
+      <section id="builder" className="section pt-8 sm:pt-10" aria-labelledby="builder-heading">
+        <div className="container-page">
+          <h2 id="builder-heading" className="sr-only">
+            Build your resume
+          </h2>
+          <ResumeBuilder />
+          <p className="mt-6 text-xs text-slate-500 print:hidden">
+            Your details stay in your browser and are never uploaded. A clean format helps your resume get read, but it does
+            not guarantee a shortlist.
+          </p>
+        </div>
+      </section>
+
+      <section className="section bg-slate-50/70" aria-labelledby="checklist">
         <div className="container-page">
           <SectionHeading
             id="checklist"
-            title="10-point ATS checklist with live score"
-            intro="Open your resume alongside. Tick each point that is genuinely true for it. Your score updates instantly."
+            title="Already have a resume? Check it in 2 minutes"
+            intro="Open your current resume alongside. Tick each point that is genuinely true for it. Your score updates instantly."
           />
           <div className="mt-6">
             <AtsChecklist />
@@ -33,7 +60,7 @@ export default function ResumePage() {
         </div>
       </section>
 
-      <section className="section bg-slate-50/70" aria-labelledby="formula">
+      <section className="section" aria-labelledby="formula">
         <div className="container-page">
           <SectionHeading id="formula" title="The project bullet formula" intro="Write 2-3 bullets for every project using this formula." />
           <ol className="mt-6 flex flex-wrap items-center gap-2">
@@ -68,7 +95,7 @@ export default function ResumePage() {
         </div>
       </section>
 
-      <section className="section" aria-labelledby="mistakes">
+      <section className="section bg-slate-50/70" aria-labelledby="mistakes">
         <div className="container-page grid gap-10 lg:grid-cols-2">
           <div>
             <SectionHeading id="mistakes" title="Common resume mistakes" />

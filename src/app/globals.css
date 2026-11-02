@@ -262,3 +262,131 @@ body {
     background-size: 22px 22px;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Resume builder: printable A4 page (794 x 1123 px at 96 dpi).
+   Plain black text, Arial, one column: easy for ATS software to read.
+--------------------------------------------------------------------------- */
+.rs-page {
+  width: 794px;
+  min-height: 1123px;
+  padding: 44px 52px;
+  background: #fff;
+  color: #111;
+  font-family: Arial, Helvetica, "Liberation Sans", sans-serif;
+  font-size: 13.3px;
+  line-height: 1.38;
+  overflow-wrap: anywhere;
+}
+.rs-page p {
+  margin: 0;
+}
+.rs-name {
+  margin: 0;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+.rs-contact {
+  margin-top: 4px !important;
+  text-align: center;
+  font-size: 12.5px;
+  color: #333;
+}
+.rs-section {
+  margin-top: 14px;
+}
+.rs-heading {
+  margin: 0 0 6px;
+  padding-bottom: 2px;
+  border-bottom: 1px solid #111;
+  font-size: 13.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.rs-item + .rs-item {
+  margin-top: 8px;
+}
+.rs-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+.rs-date {
+  flex-shrink: 0;
+  text-align: right;
+  color: #333;
+}
+.rs-muted {
+  color: #333;
+}
+.rs-skill + .rs-skill {
+  margin-top: 2px;
+}
+.rs-bullets {
+  margin: 3px 0 0;
+  padding-left: 18px;
+  list-style: disc;
+}
+.rs-bullets li + li {
+  margin-top: 2px;
+}
+.rs-placeholder {
+  margin: 0 0 16px !important;
+  padding: 14px 16px;
+  border: 1px dashed #94a3b8;
+  border-radius: 10px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  /* Only on the resume page: print the resume alone. */
+  body:has(#resume-print) header,
+  body:has(#resume-print) footer,
+  body:has(#resume-print) main > *:not(#builder) {
+    display: none !important;
+  }
+  body:has(#resume-print) {
+    background: #fff !important;
+  }
+  body:has(#resume-print) #builder {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  body:has(#resume-print) #builder .container-page {
+    max-width: none !important;
+    padding: 0 !important;
+  }
+  .rs-frame {
+    height: auto !important;
+    overflow: visible !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    --tw-ring-shadow: 0 0 #0000 !important;
+  }
+  #resume-print {
+    transform: none !important;
+    position: static !important;
+    width: 210mm !important;
+    height: auto !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border: 0 !important;
+  }
+  #resume-print .rs-page {
+    width: 210mm;
+    min-height: 0;
+    transform: none !important;
+  }
+  .rs-page {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

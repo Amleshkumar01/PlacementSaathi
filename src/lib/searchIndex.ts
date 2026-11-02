@@ -15,7 +15,8 @@ export interface SearchItem {
 const pages: SearchItem[] = [
   { title: "DSA Practice Sheet", href: "/dsa", type: "Page", hint: "Pattern-wise coding problems with filters" },
   { title: "Aptitude Practice", href: "/aptitude", type: "Page", hint: "Quant, logical and verbal with solutions" },
-  { title: "Resume Checklist (ATS)", href: "/resume", type: "Page", hint: "10-point checklist with live score" },
+  { title: "Resume Builder (ATS-friendly)", href: "/resume", type: "Page", hint: "3 templates, live preview, PDF download" },
+  { title: "ATS Resume Checker", href: "/ats-resume-checker", type: "Page", hint: "Paste your resume, get a score and fixes" },
   { title: "Mock Interview Prep", href: "/mock-interview", type: "Page", hint: "HR frameworks and technical viva" },
   { title: "HR interview questions", href: "/mock-interview#hr", type: "Interview", hint: "Tell me about yourself, strengths, why hire you" },
   { title: "Company-wise Preparation", href: "/companies", type: "Page", hint: "TCS, Infosys, Wipro, Accenture, Capgemini, Amazon" },

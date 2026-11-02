@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { absoluteUrl, buildMetadata } from "@/lib/seo";
 import { bulletFormula, commonMistakes, sectionOrder } from "@/data/resume";
 import { AtsChecklist } from "@/components/AtsChecklist";
@@ -40,6 +41,15 @@ export default function ResumePage() {
             Build your resume
           </h2>
           <ResumeBuilder />
+          <div className="mt-6 flex flex-col gap-3 rounded-2xl border border-brand-100 bg-brand-50/70 p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5 print:hidden">
+            <div>
+              <p className="font-semibold text-brand-900">Already have a resume? Get an ATS score</p>
+              <p className="mt-0.5 text-sm text-slate-600">Paste it into the free ATS resume checker for a score and a fix list.</p>
+            </div>
+            <Link href="/ats-resume-checker" className="btn btn-primary shrink-0">
+              Check my resume <Icon name="arrow" className="h-4 w-4" />
+            </Link>
+          </div>
           <p className="mt-6 text-xs text-slate-500 print:hidden">
             Your details stay in your browser and are never uploaded. A clean format helps your resume get read, but it does
             not guarantee a shortlist.
@@ -52,7 +62,7 @@ export default function ResumePage() {
           <SectionHeading
             id="checklist"
             title="Already have a resume? Check it in 2 minutes"
-            intro="Open your current resume alongside. Tick each point that is genuinely true for it. Your score updates instantly."
+            intro="Tick each point that is genuinely true for your current resume. For an automatic check, use the ATS resume checker."
           />
           <div className="mt-6">
             <AtsChecklist />

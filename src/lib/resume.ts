@@ -49,6 +49,16 @@ export interface ResumeData {
 
 export const STORAGE_KEY = "ps-resume-v1";
 
+export type TemplateId = "classic" | "modern" | "compact";
+
+export const resumeTemplates: { id: TemplateId; name: string; note: string }[] = [
+  { id: "classic", name: "Classic", note: "Centred name, black and white. Safe for every company." },
+  { id: "modern", name: "Modern", note: "Left-aligned with navy headings. Clean and readable." },
+  { id: "compact", name: "Compact", note: "Serif font, tighter spacing. Fits more on one page." },
+];
+
+export const isTemplateId = (v: unknown): v is TemplateId => v === "classic" || v === "modern" || v === "compact";
+
 export const newId = (prefix: string) => `${prefix}-${Math.random().toString(36).slice(2, 9)}`;
 
 export const blankEducation = (id = newId("edu")): EducationItem => ({ id, degree: "", school: "", location: "", start: "", end: "", score: "" });

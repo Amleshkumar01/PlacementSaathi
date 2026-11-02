@@ -31,7 +31,8 @@ export const footerGroups: { title: string; links: NavLink[] }[] = [
     links: [
       { href: "/dsa", label: "DSA Practice Sheet" },
       { href: "/aptitude", label: "Aptitude Practice" },
-      { href: "/resume", label: "Resume Checklist" },
+      { href: "/resume", label: "Resume Builder" },
+      { href: "/ats-resume-checker", label: "ATS Resume Checker" },
       { href: "/mock-interview", label: "Mock Interview" },
     ],
   },

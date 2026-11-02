@@ -8,6 +8,7 @@ const staticRoutes: { path: string; priority: number }[] = [
   { path: "/dsa", priority: 0.9 },
   { path: "/aptitude", priority: 0.9 },
   { path: "/resume", priority: 0.8 },
+  { path: "/ats-resume-checker", priority: 0.8 },
   { path: "/mock-interview", priority: 0.8 },
   { path: "/companies", priority: 0.8 },
   { path: "/roadmap", priority: 0.8 },

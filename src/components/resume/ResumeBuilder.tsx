@@ -10,6 +10,8 @@ import {
   exampleResume,
   fileBaseName,
   hasText,
+  isTemplateId,
+  resumeTemplates,
   matchKeywords,
   normalizeResume,
   runChecks,
@@ -19,6 +21,7 @@ import {
   type ExperienceItem,
   type ProjectItem,
   type ResumeData,
+  type TemplateId,
 } from "@/lib/resume";
 import { Icon } from "../Icon";
 import { ResumePreview } from "./ResumePreview";
@@ -34,6 +37,7 @@ export function ResumeBuilder() {
   const [data, setData] = useState<ResumeData>(emptyResume);
   const [loaded, setLoaded] = useState(false);
   const [experienceFirst, setExperienceFirst] = useState(false);
+  const [template, setTemplate] = useState<TemplateId>("classic");
   const [tab, setTab] = useState<"edit" | "preview">("edit");
   const [jd, setJd] = useState("");
   const [status, setStatus] = useState("");
@@ -43,10 +47,11 @@ export function ResumeBuilder() {
     try {
       const raw = window.localStorage.getItem(STORAGE_KEY);
       if (raw) {
-        const saved = JSON.parse(raw) as { data?: unknown; experienceFirst?: unknown };
+        const saved = JSON.parse(raw) as { data?: unknown; experienceFirst?: unknown; template?: unknown };
         // eslint-disable-next-line react-hooks/set-state-in-effect
         setData(normalizeResume(saved.data));
         setExperienceFirst(saved.experienceFirst === true);
+        if (isTemplateId(saved.template)) setTemplate(saved.template);
       }
     } catch {
       /* ignore broken drafts */
@@ -57,11 +62,11 @@ export function ResumeBuilder() {
   useEffect(() => {
     if (!loaded) return;
     try {
-      window.localStorage.setItem(STORAGE_KEY, JSON.stringify({ data, experienceFirst }));
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify({ data, experienceFirst, template }));
     } catch {
       /* storage full or blocked: the builder still works */
     }
-  }, [data, experienceFirst, loaded]);
+  }, [data, experienceFirst, template, loaded]);
 
   const flash = (msg: string) => {
     setStatus(msg);
@@ -198,6 +203,32 @@ export function ResumeBuilder() {
       <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-start print:block">
         {/* ---------------- Form ---------------- */}
         <div className={`min-w-0 space-y-5 print:hidden ${tab === "edit" ? "" : "hidden lg:block"}`}>
+          <section className="card" aria-labelledby="template-heading">
+            <h3 id="template-heading" className="h3">
+              Template
+            </h3>
+            <p className="mt-1 text-sm text-slate-500">All three are single-column and ATS-friendly. Switch any time; your details stay the same.</p>
+            <div role="radiogroup" aria-labelledby="template-heading" className="mt-4 grid gap-2 sm:grid-cols-3">
+              {resumeTemplates.map((t) => {
+                const on = template === t.id;
+                return (
+                  <button
+                    key={t.id}
+                    type="button"
+                    role="radio"
+                    aria-checked={on}
+                    onClick={() => setTemplate(t.id)}
+                    className={`rounded-xl border p-3 text-left transition ${on ? "border-brand-500 bg-brand-50 ring-2 ring-brand-200" : "border-slate-200 hover:border-brand-200"}`}
+                  >
+                    <TemplateThumb id={t.id} />
+                    <span className="mt-2 block text-sm font-semibold text-brand-900">{t.name}</span>
+                    <span className="mt-0.5 block text-xs text-slate-500">{t.note}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </section>
+
           <FormCard title="1. Contact details" hint="Only what a recruiter needs. No photo, date of birth or full address.">
             <div className="grid gap-3 sm:grid-cols-2">
               <Field label="Full name" value={data.name} onChange={(v) => set("name", v)} placeholder="Riya Sharma" autoComplete="name" className="sm:col-span-2" />
@@ -379,7 +410,7 @@ export function ResumeBuilder() {
           >
             <div id="resume-print" style={{ width: PAGE_W, transform: `scale(${scale})`, transformOrigin: "top left" }}>
               <div ref={paperRef}>
-                <ResumePreview data={data} experienceFirst={experienceFirst} />
+                <ResumePreview data={data} experienceFirst={experienceFirst} template={template} />
               </div>
             </div>
             {!fitsOnePage && (
@@ -412,6 +443,26 @@ export function ResumeBuilder() {
 
 // ---------------------------------------------------------------------------
 // Small form building blocks
+
+/** Tiny visual hint of each template layout (decorative). */
+function TemplateThumb({ id }: { id: TemplateId }) {
+  const line = id === "modern" ? "bg-blue-900" : "bg-slate-800";
+  const align = id === "classic" || id === "compact" ? "mx-auto" : "";
+  const gap = id === "compact" ? "space-y-1" : "space-y-1.5";
+  return (
+    <span aria-hidden="true" className={`block rounded-md border border-slate-200 bg-white p-2 ${gap}`}>
+      <span className={`block h-1.5 w-1/2 rounded ${id === "modern" ? "bg-blue-900" : "bg-slate-800"} ${align}`} />
+      <span className={`block h-1 w-3/4 rounded bg-slate-300 ${align}`} />
+      {[0, 1].map((i) => (
+        <span key={i} className={`block ${gap}`}>
+          <span className={`block h-[2px] w-full ${line}`} />
+          <span className="block h-1 w-full rounded bg-slate-200" />
+          <span className="block h-1 w-5/6 rounded bg-slate-200" />
+        </span>
+      ))}
+    </span>
+  );
+}
 // ---------------------------------------------------------------------------
 
 function FormCard({ title, hint, children }: { title: string; hint: string; children: ReactNode }) {

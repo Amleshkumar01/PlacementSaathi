@@ -6,7 +6,7 @@ const base = process.argv[2] ?? "http://localhost:3000";
 const routes = [
   "/", "/dsa", "/aptitude", "/resume", "/mock-interview", "/companies",
   "/companies/tcs", "/companies/infosys", "/companies/wipro", "/companies/accenture",
-  "/companies/capgemini", "/companies/amazon", "/roadmap", "/jobs", "/tcs-nqt-preparation", "/faq", "/about", "/contact",
+  "/companies/capgemini", "/companies/amazon", "/roadmap", "/jobs", "/tcs-nqt-preparation", "/ats-resume-checker", "/faq", "/about", "/contact",
 ];
 const longTitleRoutes = new Set(["/tcs-nqt-preparation"]);
 
@@ -50,7 +50,7 @@ for (const route of routes) {
   if (titles.has(title)) problems.push("duplicate title");
   if (descs.has(desc)) problems.push("duplicate desc");
   if (route === "/" && !jsonLd.includes("Organization")) problems.push("no Organization");
-  if ((route === "/faq" || route === "/tcs-nqt-preparation") && !jsonLd.includes("FAQPage")) problems.push("no FAQPage");
+  if (["/faq", "/tcs-nqt-preparation", "/ats-resume-checker"].includes(route) && !jsonLd.includes("FAQPage")) problems.push("no FAQPage");
   if (route === "/dsa" && !jsonLd.includes("ItemList")) problems.push("no ItemList");
   if (route.startsWith("/companies/") && !jsonLd.includes("BreadcrumbList")) problems.push("no BreadcrumbList");
   if (route.startsWith("/companies/") && !html.includes("approximate, for awareness only") && !html.includes("Approximate, for awareness only"))

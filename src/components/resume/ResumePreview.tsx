@@ -8,6 +8,7 @@ import {
   skillRows,
   toLines,
   type ResumeData,
+  type TemplateId,
 } from "@/lib/resume";
 
 /**
@@ -15,7 +16,15 @@ import {
  * standard section names, a common font and no tables.
  * Sized for A4 at 96 dpi: 794 x 1123 px.
  */
-export function ResumePreview({ data, experienceFirst }: { data: ResumeData; experienceFirst: boolean }) {
+export function ResumePreview({
+  data,
+  experienceFirst,
+  template = "classic",
+}: {
+  data: ResumeData;
+  experienceFirst: boolean;
+  template?: TemplateId;
+}) {
   const contact = contactParts(data);
   const education = filledEducation(data);
   const projects = filledProjects(data);
@@ -61,7 +70,7 @@ export function ResumePreview({ data, experienceFirst }: { data: ResumeData; exp
   );
 
   return (
-    <article className="rs-page" aria-label="Resume preview">
+    <article className={`rs-page rs-t-${template}`} aria-label="Resume preview">
       {isEmpty && (
         <p className="rs-placeholder print:hidden">
           Your resume preview appears here as you type. Start with your name and contact details, or load the example.

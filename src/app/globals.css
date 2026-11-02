@@ -390,3 +390,51 @@ body {
     print-color-adjust: exact;
   }
 }
+
+/* Resume templates. All three stay ATS-safe: one column, real text, standard headings. */
+/* Modern: left-aligned header, navy accents */
+.rs-t-modern .rs-name {
+  text-align: left;
+  color: #172554;
+  font-size: 27px;
+}
+.rs-t-modern .rs-contact {
+  text-align: left;
+}
+.rs-t-modern .rs-heading {
+  color: #172554;
+  border-bottom: 2px solid #1e3a8a;
+  letter-spacing: 0.04em;
+}
+.rs-t-modern .rs-item strong {
+  color: #172554;
+}
+
+/* Compact: serif font and tighter spacing, for students with more content */
+.rs-t-compact {
+  padding: 34px 44px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 12.6px;
+  line-height: 1.32;
+}
+.rs-t-compact .rs-name {
+  font-size: 23px;
+  letter-spacing: 0.03em;
+}
+.rs-t-compact .rs-contact {
+  font-size: 12px;
+}
+.rs-t-compact .rs-section {
+  margin-top: 10px;
+}
+.rs-t-compact .rs-heading {
+  margin-bottom: 4px;
+  font-size: 12.8px;
+  border-bottom-width: 0.75px;
+}
+.rs-t-compact .rs-item + .rs-item {
+  margin-top: 6px;
+}
+.rs-t-compact .rs-bullets li + li {
+  margin-top: 1px;
+}
